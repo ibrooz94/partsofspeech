@@ -2,6 +2,7 @@
 from flask import Flask, render_template, request
 import nltk
 nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
