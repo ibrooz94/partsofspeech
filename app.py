@@ -1,7 +1,7 @@
 
 from flask import Flask, render_template, request
 import nltk
-
+nltk.download('punkt')
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
