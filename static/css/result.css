@@ -1,0 +1,66 @@
+h1 {
+    margin-top: 2%;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+p.input {
+    margin-top: 2%;
+    font-weight: 700;
+}
+
+span.italize {
+    font-style: italic;
+    font-weight: 200;
+}
+
+span.part {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    /* identical to box height */
+
+    text-align: center;
+}
+
+ul li {
+    list-style: none;
+}
+
+.verb {
+    color: blue;
+}
+
+.noun {
+    color: red;
+}
+
+.adjective {
+    color: orange;
+}
+
+.adverb {
+    color: purple;
+}
+
+.pron {
+    color: #F94A29;
+
+}
+
+.det {
+    color: #30E3DF;
+}
+
+.conj {
+    color: #FCE22A;
+}
+
+.adp {
+    color: green;
+}

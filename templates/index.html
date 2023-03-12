@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <title>Identify Parts of Speech</title>
 </head>
 <body>
     <h1>Parts of Speech Identifier</h1>
+    <h3>For Ontology Development</h3>
     <form method="post" action="/">
-        <label for="sentence">Enter a sentence:</label><br>
-        <textarea id="sentence" name="sentence" rows="4" cols="50"></textarea><br><br>
+        <label for="inputtext">Enter text:</label><br>
+        <textarea id="inputtext" name="sentence" rows="4" cols="50" required></textarea><br><br>
         <input type="submit" value="Submit">
     </form>
 </body>

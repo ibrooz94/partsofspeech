@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
 	<title>Parts of Speech</title>
 </head>
 <body>
     <h1>Parts of Speech Identifier</h1>
-    <p>Input sentence: {{ request.form['sentence'] }}</p>
-    <p>Parts of speech:</p>
+    <h3>For Ontology Development</h3>
+
+    <p class="input">Input: <span class="italize">{{ sentence }} </span></p> <br>
+
     <ul>
     {% for word, pos in pos_tags %}
-        <li>{{ word }} - {{ pos }}</li>
+        <li>{{ word }} - <span class=" part {{ pos|pos_class }}">{{ pos }}</span> </li>
     {% endfor %}
     </ul>
 </body>
