@@ -12,12 +12,22 @@
     <h1>Parts of Speech Identifier</h1>
     <h3>For Ontology Development</h3>
 
-    <p class="input">Input: <span class="italize">{{ sentence }} </span></p> <br>
+    <p class="input">Input: <span class="italize">{{ sentence[:400] }} ... </span></p> <br>
+
+    {% if topics %}
+    <p class="input">Topics: </p>
+        <ul class="topics">
+            {% for topic in topics %}
+            <li  >{{ topic }}</li> &nbsp;
+            {% endfor %}
+        </ul>
+    {% endif %}
 
     <ul>
     {% for word, pos in pos_tags %}
         <li>{{ word }} - <span class=" part {{ pos|pos_class }}">{{ pos }}</span> </li>
     {% endfor %}
     </ul>
+    <button class="back"> <a href="/"><img src="/static/img/back_arrow.png" alt=""> </a></button>
 </body>
 </html>
