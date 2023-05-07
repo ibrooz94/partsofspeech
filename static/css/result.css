@@ -10,7 +10,7 @@ h3 {
 }
 
 p.input {
-    margin:1% 2% 0 2%;
+    margin: 1% 2% 0 2%;
     font-weight: 700;
 }
 
@@ -26,31 +26,31 @@ span.part {
     text-align: center;
 }
 
-ul.topics{
+ul.topics {
     display: flex;
     flex-direction: row;
     font-weight: 600;
     font-size: 20px;
 }
 
-ul{
+ul.topics {
     margin-bottom: 2%;
 }
 
-ul li {
+ul.topics li {
     list-style: none;
 }
 
-button.back {
+button.save {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3px 1%;
-    margin: auto;
+    padding: 10% 8%;
+    margin: 10px auto;
 
     background: #ABC5FE;
     box-shadow: inset 0px 5px 5px rgba(85, 91, 110, 0.15);
-    border-radius: 30px;
+    border-radius: 20px;
     border-style: none;
 }
 

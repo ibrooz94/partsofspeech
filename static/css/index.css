@@ -7,20 +7,45 @@
     padding: 0;
 }
 
-body {
+nav {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    padding: 1% 0;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav img {
+    max-width: 100%;
+    object-fit: contain;
+}
+
+body {
+
     background: url('/static/img/bg.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 
 }
-h1, h3, p, li{
+
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1,
+h3,
+p,
+li {
     color: #FFFFFF;
 }
+
 h1 {
     margin-top: 5%;
     font-style: normal;
@@ -53,8 +78,6 @@ label[for=inputtext] {
     font-size: 20px;
     line-height: 30px;
     /* identical to box height */
-
-    margin-top: 5%;
     text-align: center;
     color: #ECF8F7;
 }

@@ -1,33 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
-	<title>Parts of Speech</title>
-</head>
-<body>
-    <h1>Parts of Speech Identifier</h1>
-    <h3>For Ontology Development</h3>
+{% extends 'base.html' %}
 
-    <p class="input">Input: <span class="italize">{{ sentence[:400] }} ... </span></p> <br>
+{% block title %}Parts of Speech{% endblock %}
+{% block extras %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/result.css') }}"> {% endblock %}
 
-    {% if topics %}
-    <p class="input">Topics: </p>
-        <ul class="topics">
-            {% for topic in topics %}
-            <li  >{{ topic }}</li> &nbsp;
-            {% endfor %}
-        </ul>
-    {% endif %}
+{% block content %}
 
-    <ul>
-    {% for word, pos in pos_tags %}
-        <li>{{ word }} - <span class=" part {{ pos|pos_class }}">{{ pos }}</span> </li>
+
+<p class="input">Input: <span class="italize">{{ text[:400] }} ... </span></p> <br>
+
+<p class="input">Topics: </p>
+<ul class="topics">
+
+    {% for i in pos_tags %}
+    <li>{{ i[0] }} </li>  &nbsp;
     {% endfor %}
-    </ul>
-    <button class="back"> <a href="/"><img src="/static/img/back_arrow.png" alt=""> </a></button>
-</body>
-</html>
+
+</ul>
+
+<ul>
+    {% for word, pos in pos_tags %}
+    <li>{{ word }} - <span class=" part {{ pos|pos_class }}">{{ pos }}</span> </li>
+    {% endfor %}
+</ul>
+
+{% if not saved %}
+<form action="{{ url_for('save_result') }}" method="post">
+
+    <input type="hidden" name="username" value="default">
+    <input type="hidden" name="text" value="{{ text }}">
+
+    <button class="save" type="submit"> <img src="/static/img/save.png" alt=""> </button>
+
+</form>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Saved Results{% endblock %}
+{% block extras %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/saved.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Saved Results</h1>
+<form class="search-form" action="{{ url_for('list_results') }}" method="GET">
+
+  <div class="username-formgroup" style="display: none;">
+    <label> Username: </label>
+    <input type="text" name="username" id="username">
+  </div>
+
+  <div class="date-filter">
+
+    <label for="from-timestamp"> From:
+      
+      <input type="date" name="from-timestamp" id="from-timestamp">
+    </label>
+
+    <label for="to-timestamp"> To: &nbsp; &nbsp; &nbsp;
+
+      <input type="date" name="to-timestamp" id="to-timestamp">
+    </label>
+    
+  </div>
+
+  <button class="searchBtn" type="submit"><img src="/static/img/search.png" alt=""> </button>
+
+</form>
+{% if saved_results %}
+<table>
+  <thead>
+    <tr>
+      <th>Text </th>
+      <th>Timestamp</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- {# #} -->
+    {% for result in saved_results %}
+    <tr>
+      <td>{{ result.text [:70] }}</td>
+      <td>{{ result.timestamp.strftime("%b %d %I:%M %p") }}</td>
+      <td><a class="viewBtn" href="{{ url_for('results', result_id=result.id) }}">View</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No results saved yet.</p>
+{% endif %}
+{% endblock %}

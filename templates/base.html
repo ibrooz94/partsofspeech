@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>{% block title %}Identify Parts of Speech{% endblock %}</title>
+    {% block extras %} {% endblock %}
+
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashes">
+        {% for message in messages %}
+        <li class="{{ message[0] }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    <h1>Parts of Speech Identifier</h1>
+    <h3>For Ontology Development</h3>
+    <nav>
+        <ul>
+            <li> 
+                <a href="/">
+                    <img src="{{ url_for('static', filename='img/home.png') }}" alt="Save">
+                </a>
+            </li>
+            <li> 
+                <a href="/results">
+                    <img src="{{ url_for('static', filename='img/db.png') }}" alt="Saved">
+                </a> 
+            </li>
+        </ul>
+    </nav>
+    <div class="body">
+
+        
+        {% block content %}
+
+        {% endblock %}
+        
+    </div>
+
+</body>
+
+</html>
