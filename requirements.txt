@@ -21,7 +21,7 @@ pyahocorasick==2.0.0
 python-dotenv==0.21.1
 pytz==2022.7.1
 regex==2022.10.31
-scipy==1.10.1
+scipy==1.7.3
 six==1.16.0
 smart-open==6.3.0
 SQLAlchemy==2.0.12
