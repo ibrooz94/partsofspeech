@@ -2,6 +2,7 @@
 s.py
 build.sh
 appx.py
+reqx.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
