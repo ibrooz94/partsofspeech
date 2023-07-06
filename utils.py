@@ -28,3 +28,12 @@ def get_topics(text):
 def clean_text(text):
     cleaned_text = " ".join([contractions.fix(word) for word in text.split()])
     return cleaned_text
+
+def pos_class(pos):
+    pos_classes = {"V": "verb", "N": "noun", "ADJ": "adjective", "ADV": "adverb", "DET": "det", "PRON": "pron", "CONJ": "conj", "ADP": "adp"}
+
+    for key, value in pos_classes.items():
+        if pos.startswith(key):
+            return value
+
+    return ""

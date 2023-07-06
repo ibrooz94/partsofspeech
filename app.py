@@ -9,7 +9,7 @@ from flask_cors import CORS
 from nltk.tokenize import word_tokenize
 
 from models import Result, db
-from utils import clean_text, get_topics
+from utils import clean_text, get_topics, pos_class
 from dotenv import load_dotenv
 
 load_dotenv()  # take environment variables from .env.
@@ -20,13 +20,15 @@ app.secret_key = os.environ.get("SECRET_KEY")
 api = Api(app)
 CORS(app)
 
-nltk.download("punkt")
-nltk.download("averaged_perceptron_tagger")
-nltk.download("universal_tagset")
+# nltk.download("punkt")
+# nltk.download("averaged_perceptron_tagger")
+# nltk.download("universal_tagset")
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{app.root_path}/results_db.sqlite3"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app) 
+
+app.jinja_env.filters['pos_class'] = pos_class
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -97,27 +99,6 @@ def partspeech():
     else:
         return render_template("partspeech.html")
 
-
-@app.template_filter("pos_class")
-def pos_class(pos):
-    if pos.startswith("V"):
-        return "verb"
-    elif pos.startswith("N"):
-        return "noun"
-    elif pos.startswith("ADJ"):
-        return "adjective"
-    elif pos.startswith("ADV"):
-        return "adverb"
-    elif pos.startswith("DET"):
-        return "det"
-    elif pos.startswith("PRON"):
-        return "pron"
-    elif pos.startswith("CONJ"):
-        return "conj"
-    elif pos.startswith("ADP"):
-        return "adp"
-    else:
-        return ""
 
 class PartsOfSpeech(Resource):
     def post(self):
