@@ -20,9 +20,9 @@ app.secret_key = os.environ.get("SECRET_KEY")
 api = Api(app)
 CORS(app)
 
-# nltk.download("punkt")
-# nltk.download("averaged_perceptron_tagger")
-# nltk.download("universal_tagset")
+nltk.download("punkt")
+nltk.download("averaged_perceptron_tagger")
+nltk.download("universal_tagset")
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{app.root_path}/results_db.sqlite3"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
